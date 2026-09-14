@@ -1,0 +1,58 @@
+{
+    "activeFile": "house.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "house.tmx": {
+            "scale": 1.45,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 320.00000000000006,
+                "y": 183.44827586206895
+            }
+        },
+        "house_walls.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "indoors_floor1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "indoors_floor2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "indoors_main.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/damus/AndroidStudioProjects/kindergarten_demo/assets/images/Urban",
+    "map.height": 23,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 40,
+    "openFiles": [
+        "indoors_floor2.tsx",
+        "indoors_main.tsx",
+        "indoors_floor1.tsx",
+        "house_walls.tsx",
+        "house.tmx"
+    ],
+    "project": "wanderer.tiled-project",
+    "recentFiles": [
+        "indoors_floor2.tsx",
+        "indoors_main.tsx",
+        "indoors_floor1.tsx",
+        "house_walls.tsx",
+        "house.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
