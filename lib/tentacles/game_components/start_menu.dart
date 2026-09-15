@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
-import '../game/wanderer.dart';
+import '../wanderer.dart';
 
 class StartMenu extends StatelessWidget {
   static const String id = 'StartMenu';
-  final KindergartenGame game;
+  final WandGame game;
 
   const StartMenu({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black.withOpacity(0.85),
+      color: Colors.black.withOpacity(0.4),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'KINDERGARTEN',
+              'The Wanderer',
               style: TextStyle(
                 fontSize: 42,
+                fontFamily: 'HomemadeApple',
                 fontWeight: FontWeight.bold,
                 color: Colors.redAccent,
                 letterSpacing: 4,
@@ -26,7 +27,7 @@ class StartMenu extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'A Game of Choices, Secrets & Apples',
+              'By Hamza Saif',
               style: TextStyle(fontSize: 16, color: Colors.white70),
             ),
             const SizedBox(height: 50),
@@ -36,7 +37,7 @@ class StartMenu extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 16),
               ),
               onPressed: () => game.startNewGame(),
-              child: const Text('START WEDNESDAY', style: TextStyle(fontSize: 18, color: Colors.white)),
+              child: const Text('Start Monday', style: TextStyle(fontSize: 18, color: Colors.white)),
             ),
             const SizedBox(height: 16),
             OutlinedButton(
@@ -46,7 +47,7 @@ class StartMenu extends StatelessWidget {
               ),
               onPressed: () {
               },
-              child: const Text('CONTROLS & CARDS', style: TextStyle(color: Colors.white)),
+              child: const Text('Inventory', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),

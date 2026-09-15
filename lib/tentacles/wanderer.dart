@@ -1,69 +1,94 @@
-import 'package:flame/camera.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 
+import 'game_components/start_menu.dart';
+import 'game_components/pause_menu.dart';
+
 enum GameState { menu, playing, paused, dialogue }
 
-class KindergartenGame extends FlameGame with HasCollisionDetection, TapCallbacks {
+class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks {
   GameState state = GameState.menu;
   TiledComponent? currentMap;
 
-  static const double targetWidth = 480; //camera resolution
-  static const double targetHeight = 270;
-
   @override
-  Future onLoad() async {
+  Future<void> onLoad() async {
     await super.onLoad();
-
-    camera.viewport = FixedResolutionViewport(
-      resolution: Vector2(targetWidth, targetHeight), //make resolution fixed
-    );
-
-
-    pauseEngine(); //dont do any logic when on start menu
+    await loadMenu();
   }
 
-  Future startNewGame() async {
-    overlays.remove('StartMenu');
-    resumeEngine();
+  Future<void> loadMenu() async {
+    state = GameState.menu;
+    overlays.add(StartMenu.id);
+    await loadMap('menu.tmx');
+  }
+
+  Future<void> startNewGame() async {
+    overlays.remove(StartMenu.id);
+    await loadMap('house.tmx');
     state = GameState.playing;
-
-    await loadSchoolMap('school_yard.tmx');
+    overlays.add('PauseButton');
   }
 
-  Future loadSchoolMap(String mapFileName) async {
+  Future<void> quitToMenu() async {
+    overlays.remove(PauseMenu.id);
+    overlays.remove('PauseButton');
+    resumeEngine();
+    await loadMenu();
+  }
+
+  Future<void> loadMap(String mapFileName) async {
     if (currentMap != null) {
       world.remove(currentMap!);
     }
 
     try {
+      currentMap = await TiledComponent.load(
+        mapFileName,
+        Vector2.all(16),
+        prefix: 'assets/tiles/',
+      );
+
+      await world.add(currentMap!);
+      _fitMapToScreen();
     } catch (e) {
-      debugPrint("Tilemap '$mapFileName' ready to be loaded once asset is provided.");
+      debugPrint("Error loading tilemap '$mapFileName': $e");
     }
   }
 
+  void _fitMapToScreen() {
+    if (currentMap == null || size.x == 0 || size.y == 0) return;
+
+    final mapWidth = currentMap!.tileMap.map.width * currentMap!.tileMap.map.tileWidth;
+    final mapHeight = currentMap!.tileMap.map.height * currentMap!.tileMap.map.tileHeight;
+
+    final scaleX = size.x / mapWidth;
+    final scaleY = size.y / mapHeight;
+
+    camera.viewfinder.zoom = scaleX > scaleY ? scaleX : scaleY;
+    camera.viewfinder.position = Vector2(mapWidth / 2, mapHeight / 2);
+    camera.viewfinder.anchor = Anchor.center;
+  }
+
   @override
-  void render(Canvas canvas) {
-    super.render(canvas);
+  void onGameResize(Vector2 size) {
+    super.onGameResize(size);
+    _fitMapToScreen();
+  }
 
-    if (state == GameState.playing && currentMap == null) {
-      final paint = Paint()..color = const Color(0xFF388E3C); //placeholder
-      canvas.drawRect(
-        Rect.fromLTWH(0, 0, size.x, size.y),
-        paint,
-      );
+  void pauseGame() {
+    state = GameState.paused;
+    pauseEngine();
+    overlays.remove('PauseButton');
+    overlays.add(PauseMenu.id);
+  }
 
-      final textPainter = TextPainter(
-        text: const TextSpan(
-          text: 'Map Placeholder (Waiting for Tiled Asset)',
-          style: TextStyle(color: Colors.white, fontSize: 16),
-        ),
-        textDirection: TextDirection.ltr,
-      )..layout();
-      textPainter.paint(canvas, Offset(size.x / 2 - 150, size.y / 2));
-    }
+  void resumeGame() {
+    state = GameState.playing;
+    resumeEngine();
+    overlays.remove(PauseMenu.id);
+    overlays.add('PauseButton');
   }
 }
