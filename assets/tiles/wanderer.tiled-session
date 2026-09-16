@@ -4,11 +4,27 @@
         "."
     ],
     "fileStates": {
+        "Colours.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Fields.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Terrain.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "foliage.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "house.tmx": {
             "scale": 1.45,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 320.00000000000006,
+                "x": 283.448275862069,
                 "y": 183.44827586206895
             }
         },
@@ -27,6 +43,14 @@
         "indoors_main.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "menu.tmx": {
+            "scale": 1.283984375,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 320.09735320961363,
+                "y": 183.8028597505324
+            }
         }
     },
     "last.imagePath": "C:/Users/damus/AndroidStudioProjects/kindergarten_demo/assets/images/Terrain",
@@ -40,7 +64,12 @@
         "indoors_main.tsx",
         "indoors_floor1.tsx",
         "house_walls.tsx",
-        "house.tmx"
+        "house.tmx",
+        "foliage.tsx",
+        "Colours.tsx",
+        "Fields.tsx",
+        "Terrain.tsx",
+        "menu.tmx"
     ],
     "project": "wanderer.tiled-project",
     "recentFiles": [
@@ -48,6 +77,11 @@
         "indoors_main.tsx",
         "indoors_floor1.tsx",
         "house_walls.tsx",
+        "menu.tmx",
+        "Terrain.tsx",
+        "Fields.tsx",
+        "Colours.tsx",
+        "foliage.tsx",
         "house.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
