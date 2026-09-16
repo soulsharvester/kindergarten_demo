@@ -80,15 +80,15 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks {
 
   void pauseGame() {
     state = GameState.paused;
-    pauseEngine();
     overlays.remove('PauseButton');
     overlays.add(PauseMenu.id);
+    pauseEngine();
   }
 
   void resumeGame() {
     state = GameState.playing;
-    resumeEngine();
     overlays.remove(PauseMenu.id);
     overlays.add('PauseButton');
+    resumeEngine();
   }
 }
