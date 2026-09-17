@@ -4,12 +4,13 @@ import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 
+import 'actors/player.dart';
 import 'game_components/start_menu.dart';
 import 'game_components/pause_menu.dart';
 
 enum GameState { menu, playing, paused, dialogue }
 
-class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks {
+class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKeyboardHandlerComponents {
   GameState state = GameState.menu;
   TiledComponent? currentMap;
 
@@ -25,9 +26,18 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks {
     await loadMap('menu.tmx');
   }
 
+  Player? player;
+
   Future<void> startNewGame() async {
     overlays.remove(StartMenu.id);
     await loadMap('house.tmx');
+
+    currentMap?.priority = 0;
+    player = Player(position: Vector2(100, 100))..priority = 100;
+    await world.add(player!);
+
+    camera.follow(player!);
+
     state = GameState.playing;
     overlays.add('PauseButton');
   }
@@ -35,6 +45,11 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks {
   Future<void> quitToMenu() async {
     overlays.remove(PauseMenu.id);
     overlays.remove('PauseButton');
+    camera.stop();
+    if (player != null) {
+      world.remove(player!);
+      player = null;
+    }
     resumeEngine();
     await loadMenu();
   }
