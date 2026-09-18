@@ -57,7 +57,7 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
   Future<void> loadMap(String mapFileName) async {
     if (currentMap != null) {
       world.remove(currentMap!);
-    }//
+    }
 
     try {
       currentMap = await TiledComponent.load(
