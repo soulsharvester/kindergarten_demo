@@ -5,10 +5,10 @@ import '../wanderer.dart';
 
 enum PlayerState { idle, walkLeft, walkRight, walkUp, walkDown }
 
-class Player extends SpriteAnimationGroupComponent<PlayerState>
-    with HasGameRef<WandGame>, KeyboardHandler {
+class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<WandGame>, KeyboardHandler {
   final double moveSpeed = 100.0;
   Vector2 velocity = Vector2.zero();
+  final double stepTime = 0.15;
 
   Player({required Vector2 position})
       : super(position:
@@ -29,11 +29,11 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     );
 
     animations = {
-      PlayerState.idle: sheet.createAnimation(row: 0, stepTime: 0.2, to: 1),
-      PlayerState.walkLeft: sheet.createAnimation(row: 1, stepTime: 0.15, from: 12, to: 18),
-      PlayerState.walkUp: sheet.createAnimation(row: 1, stepTime: 0.15, from: 6, to: 12),
-      PlayerState.walkRight: sheet.createAnimation(row: 1, stepTime: 0.15, from: 0, to: 6),
-      PlayerState.walkDown: sheet.createAnimation(row: 1, stepTime: 0.15, from: 18, to: 24),
+      PlayerState.idle: sheet.createAnimation(row: 2, stepTime: stepTime, from: 18, to: 24),
+      PlayerState.walkLeft: sheet.createAnimation(row: 2, stepTime: stepTime, from: 12, to: 18),
+      PlayerState.walkUp: sheet.createAnimation(row: 2, stepTime: stepTime, from: 6, to: 12),
+      PlayerState.walkRight: sheet.createAnimation(row: 2, stepTime: stepTime, from: 0, to: 6),
+      PlayerState.walkDown: sheet.createAnimation(row: 2, stepTime: stepTime, from: 18, to: 24),
     };
 
     current = PlayerState.idle;
