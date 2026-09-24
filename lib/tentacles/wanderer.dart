@@ -34,7 +34,7 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
     await loadMap('house.tmx');
 
     currentMap?.priority = 0;
-    player = Player(position: Vector2(100, 100))..priority = 100;
+    player = Player(position: Vector2(200, 200))..priority = 100;
     await world.add(player!);
 
     camera.follow(player!);

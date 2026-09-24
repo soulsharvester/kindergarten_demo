@@ -90,6 +90,32 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
 
     return super.onKeyEvent(event, keysPressed);
   }
+  bool _canMoveTo(Vector2 newPosition) {
+
+    final proposedFeetRect = Rect.fromLTWH(
+      newPosition.x - 6,
+      newPosition.y - 12,
+      12,
+      11,
+    );
+
+    final obstacles = gameRef.world.children.whereType<Obstacle>();
+
+    for (final obstacle in obstacles) {
+      final obstacleRect = Rect.fromLTWH(
+        obstacle.position.x,
+        obstacle.position.y,
+        obstacle.size.x,
+        obstacle.size.y,
+      );
+
+      if (proposedFeetRect.overlaps(obstacleRect)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 
   @override
   void update(double dt) {
@@ -97,17 +123,20 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
     if (gameRef.state != GameState.playing) return;
     _updateAnimations();
     if (velocity.isZero()) return;
-    final moveStep = velocity.normalized() * moveSpeed * dt;
-    position.x += moveStep.x;
 
-    if (_collidedX) {
-      position.x -= moveStep.x;
-      _collidedX = false;
+    final moveStep = velocity.normalized() * moveSpeed * dt;
+
+    if (moveStep.x != 0) {
+      final targetX = position.x + moveStep.x;
+      if (!_canMoveTo(Vector2(targetX, position.y))) {} else {
+        position.x = targetX;
+      }
     }
-    position.y += moveStep.y;
-    if (_collidedY) {
-      position.y -= moveStep.y;
-      _collidedY = false;
+
+    if (moveStep.y != 0) {
+      final targetY = position.y + moveStep.y;
+      if (!_canMoveTo(Vector2(position.x, targetY))) {} else {
+        position.y = targetY;
+      }
     }
-  }
-}
+  }}
