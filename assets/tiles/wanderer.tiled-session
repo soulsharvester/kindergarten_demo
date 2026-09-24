@@ -1,5 +1,5 @@
 {
-    "activeFile": "outside_house.tmx",
+    "activeFile": "house.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -26,10 +26,10 @@
         },
         "house.tmx": {
             "scale": 1.45,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 283.448275862069,
-                "y": 183.44827586206895
+                "x": 324.1379310344828,
+                "y": 183.10344827586206
             }
         },
         "house_walls.tsx": {
@@ -52,16 +52,16 @@
             "scale": 1.283984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 320.09735320961363,
-                "y": 183.8028597505324
+                "x": 320.0973532096136,
+                "y": 183.41344691207792
             }
         },
         "outside_house.tmx": {
             "scale": 1.283984375,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 320.09735320961363,
-                "y": 183.8028597505324
+                "x": 366.8268938241558,
+                "y": 188.8652266504411
             }
         }
     },
@@ -91,14 +91,14 @@
         "indoors_main.tsx",
         "indoors_floor1.tsx",
         "house_walls.tsx",
-        "house.tmx",
-        "foliage.tsx",
-        "Colours.tsx",
-        "Fields.tsx",
-        "Terrain.tsx",
-        "menu.tmx",
         "Bob_Character.tsx",
-        "outside_house.tmx"
+        "outside_house.tmx",
+        "menu.tmx",
+        "Terrain.tsx",
+        "Fields.tsx",
+        "Colours.tsx",
+        "foliage.tsx",
+        "house.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

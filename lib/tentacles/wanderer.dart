@@ -5,6 +5,7 @@ import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 
 import 'actors/player.dart';
+import 'game_components/maps_logic/obstacle.dart';
 import 'game_components/start_menu.dart';
 import 'game_components/pause_menu.dart';
 
@@ -68,6 +69,15 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
 
       await world.add(currentMap!);
       _fitMapToScreen();
+      final obstacleGroup = currentMap!.tileMap.getLayer<ObjectGroup>('Collisions');
+      if (obstacleGroup != null) {
+        for (final obj in obstacleGroup.objects) {
+        final obstacle = Obstacle(
+          position: Vector2(obj.x, obj.y),
+          size: Vector2(obj.width, obj.height),
+        );
+        await world.add(obstacle);
+        }}
     } catch (e) {
       debugPrint("Error loading tilemap '$mapFileName': $e");
     }
