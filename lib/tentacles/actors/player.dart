@@ -3,6 +3,7 @@ import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/services.dart';
 import '../game_components/maps_logic/obstacle.dart';
+import '../game_components/maps_logic/portal.dart';
 import '../wanderer.dart';
 
 enum PlayerState { idle, walkLeft, walkRight, walkUp, walkDown }
@@ -13,6 +14,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
   final double stepTime = 0.15;
   bool _collidedX = false;
   bool _collidedY = false;
+  bool isTransitioning = false;
 
   Player({required Vector2 position})
       : super(position:
@@ -51,6 +53,14 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
+
+    if (other is Portal && !isTransitioning) {
+      isTransitioning = true;
+      gameRef.switchMap(
+        targetMap: other.targetMap,
+        spawnPosition: other.spawnPosition,
+      );
+    }
 
     if (other is Obstacle) {
       if (velocity.x != 0) _collidedX = true;
@@ -120,7 +130,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
   @override
   void update(double dt) {
     super.update(dt);
-    if (gameRef.state != GameState.playing) return;
+    if (gameRef.state != GameState.playing || isTransitioning) return;
     _updateAnimations();
     if (velocity.isZero()) return;
 
