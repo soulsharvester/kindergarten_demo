@@ -1,5 +1,5 @@
 {
-    "activeFile": "house.tmx",
+    "activeFile": "outside_house.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -21,13 +21,13 @@
             "scaleInEditor": 1
         },
         "foliage.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 2,
             "scaleInEditor": 1
         },
         "house.tmx": {
             "expandedObjectLayers": [
-                5,
-                6
+                6,
+                5
             ],
             "scale": 1.45,
             "selectedLayer": 3,
@@ -56,7 +56,7 @@
             "scale": 1.283984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 316.9820505019774,
+                "x": 290.50197748707023,
                 "y": 183.41344691207792
             }
         },
@@ -68,16 +68,20 @@
             "scale": 1.283984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 328.664435655613,
-                "y": 188.8652266504411
+                "x": 340.3468208092485,
+                "y": 193.5381807118953
             }
         },
         "park.tmx": {
+            "expandedObjectLayers": [
+                6,
+                7
+            ],
             "scale": 1.4621093749999998,
-            "selectedLayer": 6,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 320.0854929201176,
-                "y": 184.3227357734438
+                "x": 296.8314186481432,
+                "y": 168.59203847181402
             }
         }
     },
@@ -96,10 +100,10 @@
     "project": "wanderer.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "house.tmx",
+        "menu.tmx",
         "park.tmx",
         "outside_house.tmx",
-        "menu.tmx",
-        "house.tmx",
         "indoors_floor2.tsx",
         "indoors_main.tsx",
         "indoors_floor1.tsx",
