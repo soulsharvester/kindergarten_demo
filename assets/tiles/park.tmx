@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="36">
+<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="42">
  <tileset firstgid="1" source="Fields.tsx"/>
  <tileset firstgid="49" source="Colours.tsx"/>
  <tileset firstgid="371" source="foliage.tsx"/>
@@ -139,11 +139,20 @@
 </data>
  </layer>
  <objectgroup id="7" name="Portals">
-  <object id="1" x="0" y="355.651" width="160.727" height="15.0468"/>
-  <object id="2" x="-8.20732" y="174.406" width="22.5701" height="195.608"/>
-  <object id="3" x="12.311" y="-10.2592" width="566.989" height="28.7256"/>
-  <object id="4" x="-2.05183" y="107.379" width="17.0986" height="64.9746"/>
-  <object id="5" x="621.021" y="121.742" width="36.9329" height="71.8141"/>
+  <object id="3" x="12.311" y="-10.2592" width="282.469" height="19.1504">
+   <properties>
+    <property name="spawnX" type="float" value="300"/>
+    <property name="spawnY" type="float" value="320"/>
+    <property name="targetMap" value="outside_house.tmx"/>
+   </properties>
+  </object>
+  <object id="40" x="292.044" y="-13.6789" width="290.676" height="21.8862">
+   <properties>
+    <property name="spawnX" type="float" value="550"/>
+    <property name="spawnY" type="float" value="320"/>
+    <property name="targetMap" value="outside_house.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="6" name="Collisions">
   <object id="6" x="-2.73577" y="-3.41972" width="17.7825" height="110.115"/>
@@ -175,5 +184,8 @@
   <object id="33" x="369.329" y="287.94" width="47.876" height="108.747"/>
   <object id="34" x="351.547" y="305.039" width="43.0884" height="77.2856"/>
   <object id="35" x="326.925" y="318.718" width="58.8191" height="55.3994"/>
+  <object id="36" x="-4.10366" y="106.695" width="12.9949" height="268.79"/>
+  <object id="37" x="-6.83943" y="357.018" width="190.82" height="15.0468"/>
+  <object id="39" x="630.596" y="114.902" width="13.6789" height="82.0732"/>
  </objectgroup>
 </map>

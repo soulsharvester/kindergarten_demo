@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="22">
+<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="30">
  <tileset firstgid="1" source="Fields.tsx"/>
  <tileset firstgid="49" source="indoors_floor1.tsx"/>
  <tileset firstgid="440" source="house_walls.tsx"/>
@@ -87,13 +87,25 @@
 </data>
  </layer>
  <objectgroup id="5" name="Portals">
-  <object id="19" x="557.639" y="77.8826" width="31.9319" height="44.3931"/>
-  <object id="20" x="207.168" y="89.565" width="37.3836" height="48.2872"/>
   <object id="21" x="124.612" y="90.3438" width="37.3836" height="52.1813">
    <properties>
-    <property name="spawnX" type="float" value="570"/>
+    <property name="spawnX" type="float" value="580"/>
     <property name="spawnY" type="float" value="70"/>
     <property name="targetMap" value="house.tmx"/>
+   </properties>
+  </object>
+  <object id="27" x="-1.55765" y="358.26" width="193.149" height="12.4612">
+   <properties>
+    <property name="spawnX" type="float" value="250"/>
+    <property name="spawnY" type="float" value="700"/>
+    <property name="targetMap" value="park.tmx"/>
+   </properties>
+  </object>
+  <object id="29" x="447.046" y="364.49" width="140.189" height="16.3553">
+   <properties>
+    <property name="spawnX" type="float" value="550"/>
+    <property name="spawnY" type="float" value="70"/>
+    <property name="targetMap" value="park.tmx"/>
    </properties>
   </object>
  </objectgroup>
@@ -113,5 +125,8 @@
   <object id="16" x="621.503" y="319.319" width="28.8166" height="14.7977"/>
   <object id="17" x="-0.778826" y="302.184" width="31.9319" height="48.2872"/>
   <object id="18" x="21.0283" y="315.424" width="30.3742" height="21.0283"/>
+  <object id="22" x="619.166" y="1.55765" width="24.9224" height="33.4895"/>
+  <object id="25" x="110.593" y="77.1037" width="143.304" height="42.8354"/>
+  <object id="26" x="545.957" y="75.5461" width="57.6331" height="28.8166"/>
  </objectgroup>
 </map>

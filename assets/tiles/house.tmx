@@ -88,7 +88,7 @@
  <objectgroup id="6" name="Portals">
   <object id="18" x="558.621" y="14.4828" width="31.7241" height="18.6207">
    <properties>
-    <property name="spawnX" type="float" value="160"/>
+    <property name="spawnX" type="float" value="110"/>
     <property name="spawnY" type="float" value="165"/>
     <property name="targetMap" value="outside_house.tmx"/>
    </properties>
