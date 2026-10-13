@@ -30,7 +30,7 @@
                 6
             ],
             "scale": 1.45,
-            "selectedLayer": 3,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 320.00000000000006,
                 "y": 183.10344827586206
@@ -66,9 +66,9 @@
                 4
             ],
             "scale": 1.283984375,
-            "selectedLayer": 4,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 390.9704898083359,
+                "x": 226.6382719805294,
                 "y": 193.5381807118953
             }
         },
@@ -78,7 +78,7 @@
                 4
             ],
             "scale": 1.3522656249999998,
-            "selectedLayer": 2,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 320.20336241261776,
                 "y": 188.20266913166563

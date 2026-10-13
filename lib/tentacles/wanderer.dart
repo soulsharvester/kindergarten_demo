@@ -1,6 +1,7 @@
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,9 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
       player!.position = spawnPosition.clone();
       player!.isTransitioning = false;
     }
+    camera.viewfinder.zoom = 2.5;
     camera.follow(player!);
+    _updateCameraBounds();
   }
 
   Future<void> quitToMenu() async {
@@ -93,7 +96,6 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
       await world.add(currentMap!);
       _fitMapToScreen();
 
-      // Parse Obstacles Layer
       final obstacleGroup = currentMap!.tileMap.getLayer<ObjectGroup>('Collisions');
       if (obstacleGroup != null) {
         for (final obj in obstacleGroup.objects) {
@@ -105,7 +107,6 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
         }
       }
 
-      // Parse Portals Layer
       final portalGroup = currentMap!.tileMap.getLayer<ObjectGroup>('Portals');
       if (portalGroup != null) {
         for (final obj in portalGroup.objects) {
@@ -127,6 +128,23 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
     }
   }
 
+  void _updateCameraBounds() {
+    if (currentMap == null) return;
+
+    final mapWidth = currentMap!.tileMap.map.width * currentMap!.tileMap.map.tileWidth.toDouble();
+    final mapHeight = currentMap!.tileMap.map.height * currentMap!.tileMap.map.tileHeight.toDouble();
+    final halfViewportWidth = (camera.viewport.size.x / 2) / camera.viewfinder.zoom;
+    final halfViewportHeight = (camera.viewport.size.y / 2) / camera.viewfinder.zoom;
+    camera.setBounds(
+      Rectangle.fromLTWH(
+        halfViewportWidth,
+        halfViewportHeight,
+        mapWidth - (halfViewportWidth * 2),
+        mapHeight - (halfViewportHeight * 2),
+      ),
+    );
+  }
+
   void _fitMapToScreen() {
     if (currentMap == null || size.x == 0 || size.y == 0) return;
 
@@ -136,6 +154,7 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
     final scaleX = size.x / mapWidth;
     final scaleY = size.y / mapHeight;
 
+    camera.stop();
     camera.viewfinder.zoom = scaleX > scaleY ? scaleX : scaleY;
     camera.viewfinder.position = Vector2(mapWidth / 2, mapHeight / 2);
     camera.viewfinder.anchor = Anchor.center;
@@ -144,7 +163,11 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
   @override
   void onGameResize(Vector2 size) {
     super.onGameResize(size);
-    _fitMapToScreen();
+    if (state == GameState.menu) {
+      _fitMapToScreen();
+    } else if (state == GameState.playing) {
+      _updateCameraBounds();
+    }
   }
 
   void pauseGame() {
