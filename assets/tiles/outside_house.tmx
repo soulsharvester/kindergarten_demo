@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="30">
+<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="35">
  <tileset firstgid="1" source="Fields.tsx"/>
  <tileset firstgid="49" source="indoors_floor1.tsx"/>
  <tileset firstgid="440" source="house_walls.tsx"/>
@@ -16,7 +16,7 @@
 200,145,145,227,227,227,228,145,145,145,145,145,145,145,145,145,145,227,227,227,228,145,145,268,268,268,268,268,145,145,145,145,145,145,145,145,145,145,145,166,
 166,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,234,234,234,234,234,145,145,145,145,145,145,145,145,145,145,145,166,
 166,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,145,166,166,166,266,266,343,343,343,343,343,343,343,343,343,343,343,266,
-343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,
+343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,265,343,343,343,343,343,
 343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343,266,266,266,266,266,266,266,266,266,
 266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,266,166,166,166,166,166,166,166,166,
 166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,
@@ -87,25 +87,32 @@
 </data>
  </layer>
  <objectgroup id="5" name="Portals">
-  <object id="21" x="124.612" y="90.3438" width="37.3836" height="52.1813">
+  <object id="21" x="124.612" y="90.3438" width="37.3836" height="43.6142">
    <properties>
-    <property name="spawnX" type="float" value="580"/>
-    <property name="spawnY" type="float" value="70"/>
+    <property name="spawnX" type="float" value="540"/>
+    <property name="spawnY" type="float" value="42"/>
     <property name="targetMap" value="house.tmx"/>
    </properties>
   </object>
-  <object id="27" x="-1.55765" y="358.26" width="193.149" height="12.4612">
+  <object id="27" x="-1.55765" y="362.933" width="193.149" height="8.56707">
    <properties>
-    <property name="spawnX" type="float" value="250"/>
-    <property name="spawnY" type="float" value="700"/>
+    <property name="spawnX" type="float" value="153"/>
+    <property name="spawnY" type="float" value="35"/>
     <property name="targetMap" value="park.tmx"/>
    </properties>
   </object>
-  <object id="29" x="447.046" y="364.49" width="140.189" height="16.3553">
+  <object id="29" x="447.825" y="362.932" width="140.189" height="12.4612">
    <properties>
-    <property name="spawnX" type="float" value="550"/>
-    <property name="spawnY" type="float" value="70"/>
+    <property name="spawnX" type="float" value="450"/>
+    <property name="spawnY" type="float" value="25"/>
     <property name="targetMap" value="park.tmx"/>
+   </properties>
+  </object>
+  <object id="30" x="634.743" y="137.073" width="10.9036" height="176.793">
+   <properties>
+    <property name="spawnX" type="float" value="27"/>
+    <property name="spawnY" type="float" value="173"/>
+    <property name="targetMap" value="outside_school.tmx"/>
    </properties>
   </object>
  </objectgroup>
@@ -126,7 +133,10 @@
   <object id="17" x="-0.778826" y="302.184" width="31.9319" height="48.2872"/>
   <object id="18" x="21.0283" y="315.424" width="30.3742" height="21.0283"/>
   <object id="22" x="619.166" y="1.55765" width="24.9224" height="33.4895"/>
-  <object id="25" x="110.593" y="77.1037" width="143.304" height="42.8354"/>
+  <object id="25" x="201.716" y="77.1037" width="52.1814" height="59.1907"/>
   <object id="26" x="545.957" y="75.5461" width="57.6331" height="28.8166"/>
+  <object id="31" x="638.637" y="32.7107" width="20.2495" height="102.805"/>
+  <object id="32" x="-21.0283" y="43.6142" width="23.3648" height="260.128"/>
+  <object id="33" x="110.593" y="79.4402" width="71.652" height="44.3931"/>
  </objectgroup>
 </map>

@@ -139,16 +139,16 @@
 </data>
  </layer>
  <objectgroup id="7" name="Portals">
-  <object id="3" x="12.311" y="-10.2592" width="282.469" height="19.1504">
+  <object id="3" x="12.311" y="-10.2592" width="282.469" height="15.7307">
    <properties>
-    <property name="spawnX" type="float" value="300"/>
+    <property name="spawnX" type="float" value="125"/>
     <property name="spawnY" type="float" value="320"/>
     <property name="targetMap" value="outside_house.tmx"/>
    </properties>
   </object>
-  <object id="40" x="292.044" y="-13.6789" width="290.676" height="21.8862">
+  <object id="40" x="292.044" y="-13.6789" width="290.676" height="18.4665">
    <properties>
-    <property name="spawnX" type="float" value="550"/>
+    <property name="spawnX" type="float" value="516"/>
     <property name="spawnY" type="float" value="320"/>
     <property name="targetMap" value="outside_house.tmx"/>
    </properties>
