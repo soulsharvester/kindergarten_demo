@@ -13,6 +13,9 @@ import 'game_components/pause_menu.dart';
 enum GameState { menu, playing, paused, dialogue }
 
 class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKeyboardHandlerComponents {
+
+  bool keyCheck = false;
+
   GameState state = GameState.menu;
   TiledComponent? currentMap;
 

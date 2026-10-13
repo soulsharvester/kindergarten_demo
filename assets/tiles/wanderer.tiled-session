@@ -1,5 +1,5 @@
 {
-    "activeFile": "outside_house.tmx",
+    "activeFile": "school.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -26,14 +26,14 @@
         },
         "house.tmx": {
             "expandedObjectLayers": [
-                6,
-                5
+                5,
+                6
             ],
             "scale": 1.45,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 566.8965517241379,
-                "y": 195.51724137931035
+                "x": 320.00000000000006,
+                "y": 183.10344827586206
             }
         },
         "house_walls.tsx": {
@@ -56,20 +56,32 @@
             "scale": 1.283984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 290.50197748707023,
+                "x": 215.73471250380285,
                 "y": 183.41344691207792
             }
         },
         "outside_house.tmx": {
             "expandedObjectLayers": [
-                4,
-                5
+                5,
+                4
             ],
             "scale": 1.283984375,
-            "selectedLayer": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 340.3468208092485,
+                "x": 390.9704898083359,
                 "y": 193.5381807118953
+            }
+        },
+        "outside_school.tmx": {
+            "expandedObjectLayers": [
+                3,
+                4
+            ],
+            "scale": 1.3522656249999998,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 320.20336241261776,
+                "y": 188.20266913166563
             }
         },
         "park.tmx": {
@@ -83,6 +95,18 @@
                 "x": 296.8314186481432,
                 "y": 168.59203847181402
             }
+        },
+        "school.tmx": {
+            "expandedObjectLayers": [
+                4,
+                6
+            ],
+            "scale": 1.3522656249999998,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 178.21942342134156,
+                "y": 188.20266913166563
+            }
         }
     },
     "last.imagePath": "C:/Users/damus/AndroidStudioProjects/kindergarten_demo/assets/images/Characters",
@@ -95,23 +119,25 @@
         "house.tmx",
         "menu.tmx",
         "outside_house.tmx",
-        "park.tmx"
+        "park.tmx",
+        "outside_school.tmx",
+        "school.tmx"
     ],
     "project": "wanderer.tiled-project",
     "property.type": "string",
     "recentFiles": [
         "house.tmx",
         "menu.tmx",
-        "park.tmx",
         "outside_house.tmx",
+        "park.tmx",
+        "outside_school.tmx",
+        "school.tmx",
         "indoors_floor2.tsx",
         "indoors_main.tsx",
         "indoors_floor1.tsx",
         "house_walls.tsx",
         "foliage.tsx",
-        "Colours.tsx",
-        "Fields.tsx",
-        "Terrain.tsx"
+        "Colours.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
