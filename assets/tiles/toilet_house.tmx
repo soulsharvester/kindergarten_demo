@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="14">
+ <tileset firstgid="1" source="house_walls.tsx"/>
+ <tileset firstgid="36" source="indoors_floor1.tsx"/>
+ <tileset firstgid="427" source="Colours.tsx"/>
+ <tileset firstgid="749" source="indoors_main.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="10" height="10">
+  <data encoding="csv">
+16,16,16,16,16,16,16,16,16,16,
+16,9,9,9,554,554,9,9,9,16,
+16,69,69,69,69,69,69,69,69,16,
+16,69,69,69,69,69,69,69,69,16,
+16,69,69,69,69,69,69,69,69,16,
+16,69,69,69,69,69,69,69,69,16,
+16,69,69,69,69,69,69,69,69,16,
+16,69,69,69,69,69,69,69,69,16,
+16,23,23,23,23,23,23,23,23,16,
+16,16,16,16,16,16,16,16,16,16
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="10" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,1204,1205,0,
+8,0,0,0,0,0,0,1220,1221,10,
+15,0,0,0,0,0,0,0,0,17,
+15,0,0,0,0,0,0,0,864,17,
+15,0,0,0,0,0,0,0,864,17,
+15,0,0,0,0,0,0,0,0,17,
+15,0,0,0,0,0,0,0,0,17,
+15,0,0,0,0,0,0,0,0,17,
+22,0,0,0,0,0,0,0,0,24,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="Tile Layer 3" width="10" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,867,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,867,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="5" name="Portals">
+  <object id="13" x="62.3333" y="21.6667" width="34.6667" height="10">
+   <properties>
+    <property name="spawnX" type="float" value="589"/>
+    <property name="spawnY" type="float" value="281"/>
+    <property name="targetMap" value="house.tmx"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Collisions">
+  <object id="1" x="-8" y="-8" width="24" height="171.667"/>
+  <object id="3" x="-1.66667" y="126.667" width="164.667" height="51.6667"/>
+  <object id="5" x="144.667" y="-5.66667" width="33.6667" height="156"/>
+  <object id="7" x="-30" y="-20.3333" width="222.333" height="44"/>
+  <object id="8" x="97" y="15.3333" width="59" height="16.6667"/>
+  <object id="9" x="-23.6667" y="8.33333" width="87.3333" height="24"/>
+  <object id="10" x="128.333" y="46.6667" width="18.3333" height="10.3333"/>
+  <object id="11" x="131.667" y="56" width="16.3333" height="24"/>
+  <object id="12" x="127.667" y="79.3333" width="23.3333" height="10.3333"/>
+ </objectgroup>
+</map>
