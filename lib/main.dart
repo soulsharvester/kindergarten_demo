@@ -1,5 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:kindergarten_game/tentacles/game_components/dialogue_overlay.dart';
 import 'package:kindergarten_game/tentacles/game_components/transition_overlay.dart';
 import 'package:kindergarten_game/tentacles/wanderer.dart';
 import 'tentacles/game_components/start_menu.dart';
@@ -54,6 +55,12 @@ class _GameViewState extends State<GameView> {
             onMidpoint: () => game.performMapSwitch(),
             onComplete: () => game.finishTransition(),
           ),
+          DialogueOverlay.id: (BuildContext context, WandGame game) {
+            if (game.activeNPC != null) {
+              return DialogueOverlay(game: game, npc: game.activeNPC!);
+            }
+            return const SizedBox.shrink();
+          },
           'PauseButton': (context, game) => Positioned(
             top: 16,
             right: 16,

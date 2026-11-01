@@ -5,7 +5,9 @@ import 'package:flame/experimental.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 
+import 'actors/npc.dart';
 import 'actors/player.dart';
+import 'game_components/dialogue_overlay.dart';
 import 'game_components/maps_logic/obstacle.dart';
 import 'game_components/maps_logic/portal.dart';
 import 'game_components/start_menu.dart';
@@ -65,6 +67,7 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
 
     world.children.whereType<Obstacle>().forEach((o) => world.remove(o));
     world.children.whereType<Portal>().forEach((p) => world.remove(p));
+    world.children.whereType<NPC>().forEach((n) => world.remove(n));
 
     await loadMap(pendingTargetMap!);
 
@@ -104,23 +107,43 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
   }
 
   Future<void> loadMap(String mapFileName) async {
-    if (currentMap != null) {
-      world.remove(currentMap!);
-    }
-
     try {
-      currentMap = await TiledComponent.load(
+      if (currentMap != null && currentMap!.isMounted) {
+        world.remove(currentMap!);
+      }
+      currentMap = null;
+
+      final newMap = await TiledComponent.load(
         mapFileName,
         Vector2.all(16),
         prefix: 'assets/tiles/',
       );
 
+      currentMap = newMap;
       currentMap?.priority = 0;
       await world.add(currentMap!);
+
       if (state == GameState.menu) {
         _fitMapToScreen();
       } else {
         _updateCameraBounds();
+      }
+
+      final npcGroup = currentMap!.tileMap.getLayer<ObjectGroup>('NPCs');
+      if (npcGroup != null) {
+        for (final obj in npcGroup.objects) {
+          final npcId = obj.properties.getValue<int>('npcId') ?? 1;
+          final npcName = obj.properties.getValue<String>('npcName') ?? 'NPC';
+
+          final npc = NPC(
+            position: Vector2(obj.x, obj.y),
+            size: Vector2(obj.width, obj.height),
+            npcId: npcId,
+            npcName: npcName,
+            dialogueLines: ['Hello wanderer!', 'Nice day for a walk.'],
+          );
+          await world.add(npc);
+        }
       }
 
       final obstacleGroup = currentMap!.tileMap.getLayer<ObjectGroup>('Collisions');
@@ -214,6 +237,22 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
     state = GameState.playing;
     overlays.remove(PauseMenu.id);
     overlays.add('PauseButton');
+    resumeEngine();
+  }
+
+  NPC? activeNPC;
+
+  void startDialogue(NPC npc) {
+    state = GameState.dialogue;
+    activeNPC = npc;
+    pauseEngine();
+    overlays.add(DialogueOverlay.id);
+  }
+
+  void closeDialogue() {
+    overlays.remove(DialogueOverlay.id);
+    activeNPC = null;
+    state = GameState.playing;
     resumeEngine();
   }
 }
