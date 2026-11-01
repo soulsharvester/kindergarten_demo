@@ -30,11 +30,11 @@ class _TransitionOverlayState extends State<TransitionOverlay>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 800),
     );
 
     _animation = Tween<double>(begin: 1.0, end: 0.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     );
 
     _controller.addListener(() {

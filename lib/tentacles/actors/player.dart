@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import '../game_components/maps_logic/obstacle.dart';
 import '../game_components/maps_logic/portal.dart';
 import '../wanderer.dart';
+import 'npc.dart';
 
 enum PlayerState { idle, walkLeft, walkRight, walkUp, walkDown }
 
@@ -15,6 +16,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
   bool _collidedX = false;
   bool _collidedY = false;
   bool isTransitioning = false;
+  final Set<LogicalKeyboardKey> _pressedKeys = {};
 
   Player({required Vector2 position})
       : super(position:
@@ -61,7 +63,9 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
         spawnPosition: other.spawnPosition,
       );
     }
-
+    if (other is NPC) {
+      other.triggerDialogue();
+    }
     if (other is Obstacle) {
       if (velocity.x != 0) _collidedX = true;
       if (velocity.y != 0) _collidedY = true;
@@ -84,22 +88,11 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
 
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    velocity = Vector2.zero();
-
-    if (keysPressed.contains(LogicalKeyboardKey.keyA) || keysPressed.contains(LogicalKeyboardKey.arrowLeft)) {
-      velocity.x = -1;
-    } else if (keysPressed.contains(LogicalKeyboardKey.keyD) || keysPressed.contains(LogicalKeyboardKey.arrowRight)) {
-      velocity.x = 1;
-    }
-
-    if (keysPressed.contains(LogicalKeyboardKey.keyW) || keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
-      velocity.y = -1;
-    } else if (keysPressed.contains(LogicalKeyboardKey.keyS) || keysPressed.contains(LogicalKeyboardKey.arrowDown)) {
-      velocity.y = 1;
-    }
-
+    _pressedKeys.clear();
+    _pressedKeys.addAll(keysPressed);
     return super.onKeyEvent(event, keysPressed);
   }
+
   bool _canMoveTo(Vector2 newPosition) {
 
     final proposedFeetRect = Rect.fromLTWH(
@@ -118,34 +111,48 @@ class Player extends SpriteAnimationGroupComponent<PlayerState> with HasGameRef<
         obstacle.size.x,
         obstacle.size.y,
       );
-
       if (proposedFeetRect.overlaps(obstacleRect)) {
         return false;
       }
     }
-
     return true;
   }
-
   @override
   void update(double dt) {
     super.update(dt);
-    if (gameRef.state != GameState.playing || isTransitioning) return;
+    if (gameRef.state != GameState.playing || gameRef.isTransitioningMap || isTransitioning) {
+      velocity = Vector2.zero();
+      _updateAnimations();
+      return;
+    }
+    velocity = Vector2.zero();
+
+    if (_pressedKeys.contains(LogicalKeyboardKey.keyA) || _pressedKeys.contains(LogicalKeyboardKey.arrowLeft)) {
+      velocity.x = -1;
+    } else if (_pressedKeys.contains(LogicalKeyboardKey.keyD) || _pressedKeys.contains(LogicalKeyboardKey.arrowRight)) {
+      velocity.x = 1;
+    }
+
+    if (_pressedKeys.contains(LogicalKeyboardKey.keyW) || _pressedKeys.contains(LogicalKeyboardKey.arrowUp)) {
+      velocity.y = -1;
+    } else if (_pressedKeys.contains(LogicalKeyboardKey.keyS) || _pressedKeys.contains(LogicalKeyboardKey.arrowDown)) {
+      velocity.y = 1;
+    }
+
     _updateAnimations();
     if (velocity.isZero()) return;
-
     final moveStep = velocity.normalized() * moveSpeed * dt;
 
     if (moveStep.x != 0) {
       final targetX = position.x + moveStep.x;
-      if (!_canMoveTo(Vector2(targetX, position.y))) {} else {
+      if (_canMoveTo(Vector2(targetX, position.y))) {
         position.x = targetX;
       }
     }
 
     if (moveStep.y != 0) {
       final targetY = position.y + moveStep.y;
-      if (!_canMoveTo(Vector2(position.x, targetY))) {} else {
+      if (_canMoveTo(Vector2(position.x, targetY))) {
         position.y = targetY;
       }
     }
