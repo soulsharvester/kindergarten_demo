@@ -10,12 +10,16 @@ import 'game_components/maps_logic/obstacle.dart';
 import 'game_components/maps_logic/portal.dart';
 import 'game_components/start_menu.dart';
 import 'game_components/pause_menu.dart';
+import 'game_components/transition_overlay.dart';
 
 enum GameState { menu, playing, paused, dialogue }
 
 class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKeyboardHandlerComponents {
 
   bool keyCheck = false;
+  String? pendingTargetMap;
+  Vector2? pendingSpawnPosition;
+  bool isTransitioningMap = false;
 
   GameState state = GameState.menu;
   TiledComponent? currentMap;
@@ -36,12 +40,11 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
 
   Future<void> startNewGame() async {
     overlays.remove(StartMenu.id);
+    state = GameState.playing;
     await switchMap(
       targetMap: 'house.tmx',
       spawnPosition: Vector2(300, 150),
     );
-
-    state = GameState.playing;
     overlays.add('PauseButton');
   }
 
@@ -49,22 +52,42 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
     required String targetMap,
     required Vector2 spawnPosition,
   }) async {
+    if (isTransitioningMap) return;
+    isTransitioningMap = true;
+
+    pendingTargetMap = targetMap;
+    pendingSpawnPosition = spawnPosition;
+    overlays.add(TransitionOverlay.id);
+  }
+
+  Future<void> performMapSwitch() async {
+    if (pendingTargetMap == null || pendingSpawnPosition == null) return;
+
     world.children.whereType<Obstacle>().forEach((o) => world.remove(o));
     world.children.whereType<Portal>().forEach((p) => world.remove(p));
 
-    await loadMap(targetMap);
+    await loadMap(pendingTargetMap!);
 
     if (player == null) {
-      player = Player(position: spawnPosition)..priority = 100;
+      player = Player(position: pendingSpawnPosition!)
+        ..priority = 100;
       await world.add(player!);
     } else {
-      player!.position = spawnPosition.clone();
+      player!.position = pendingSpawnPosition!.clone();
       player!.isTransitioning = false;
     }
     camera.viewfinder.zoom = 2.5;
     camera.follow(player!);
     _updateCameraBounds();
   }
+
+    void finishTransition() {
+      overlays.remove(TransitionOverlay.id);
+      isTransitioningMap = false;
+      pendingTargetMap = null;
+      pendingSpawnPosition = null;
+  }
+
 
   Future<void> quitToMenu() async {
     overlays.remove(PauseMenu.id);
@@ -94,7 +117,11 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
 
       currentMap?.priority = 0;
       await world.add(currentMap!);
-      _fitMapToScreen();
+      if (state == GameState.menu) {
+        _fitMapToScreen();
+      } else {
+        _updateCameraBounds();
+      }
 
       final obstacleGroup = currentMap!.tileMap.getLayer<ObjectGroup>('Collisions');
       if (obstacleGroup != null) {
@@ -135,6 +162,12 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
     final mapHeight = currentMap!.tileMap.map.height * currentMap!.tileMap.map.tileHeight.toDouble();
     final halfViewportWidth = (camera.viewport.size.x / 2) / camera.viewfinder.zoom;
     final halfViewportHeight = (camera.viewport.size.y / 2) / camera.viewfinder.zoom;
+
+    if (mapWidth < camera.viewport.size.x / camera.viewfinder.zoom ||
+        mapHeight < camera.viewport.size.y / camera.viewfinder.zoom) {
+      camera.setBounds(Rectangle.fromLTWH(0, 0, mapWidth, mapHeight));
+      return;
+    }
     camera.setBounds(
       Rectangle.fromLTWH(
         halfViewportWidth,
@@ -148,8 +181,8 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
   void _fitMapToScreen() {
     if (currentMap == null || size.x == 0 || size.y == 0) return;
 
-    final mapWidth = currentMap!.tileMap.map.width * currentMap!.tileMap.map.tileWidth;
-    final mapHeight = currentMap!.tileMap.map.height * currentMap!.tileMap.map.tileHeight;
+    final mapWidth = (currentMap!.tileMap.map.width * currentMap!.tileMap.map.tileWidth).toDouble();
+    final mapHeight = (currentMap!.tileMap.map.height * currentMap!.tileMap.map.tileHeight).toDouble();
 
     final scaleX = size.x / mapWidth;
     final scaleY = size.y / mapHeight;
