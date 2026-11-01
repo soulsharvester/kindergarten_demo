@@ -43,6 +43,14 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
   Future<void> startNewGame() async {
     overlays.remove(StartMenu.id);
     state = GameState.playing;
+
+    if (player != null) {
+      if (player!.isMounted) {
+        world.remove(player!);
+      }
+      player = null;
+    }
+
     await switchMap(
       targetMap: 'house.tmx',
       spawnPosition: Vector2(300, 150),
@@ -59,7 +67,10 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
 
     pendingTargetMap = targetMap;
     pendingSpawnPosition = spawnPosition;
-    overlays.add(TransitionOverlay.id);
+
+    if (!overlays.isActive(TransitionOverlay.id)) {
+      overlays.add(TransitionOverlay.id);
+    }
   }
 
   Future<void> performMapSwitch() async {
@@ -72,36 +83,48 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
     await loadMap(pendingTargetMap!);
 
     if (player == null) {
-      player = Player(position: pendingSpawnPosition!)
-        ..priority = 100;
+      player = Player(position: pendingSpawnPosition!)..priority = 100;
       await world.add(player!);
     } else {
-      player!.position = pendingSpawnPosition!.clone();
-      player!.isTransitioning = false;
+      if (player!.isMounted) {
+        world.remove(player!);
+      }
+      player = Player(position: pendingSpawnPosition!)..priority = 100;
+      await world.add(player!);
     }
+
     camera.viewfinder.zoom = 2.5;
     camera.follow(player!);
     _updateCameraBounds();
   }
 
-    void finishTransition() {
-      overlays.remove(TransitionOverlay.id);
-      isTransitioningMap = false;
-      pendingTargetMap = null;
-      pendingSpawnPosition = null;
+  void finishTransition() {
+    overlays.remove(TransitionOverlay.id);
+    isTransitioningMap = false;
+    pendingTargetMap = null;
+    pendingSpawnPosition = null;
   }
-
 
   Future<void> quitToMenu() async {
     overlays.remove(PauseMenu.id);
     overlays.remove('PauseButton');
     camera.stop();
+
     if (player != null) {
-      world.remove(player!);
+      if (player!.isMounted) {
+        world.remove(player!);
+      }
       player = null;
     }
+
     world.children.whereType<Obstacle>().forEach((o) => world.remove(o));
     world.children.whereType<Portal>().forEach((p) => world.remove(p));
+    world.children.whereType<NPC>().forEach((n) => world.remove(n));
+
+    isTransitioningMap = false;
+    pendingTargetMap = null;
+    pendingSpawnPosition = null;
+
     resumeEngine();
     await loadMenu();
   }
