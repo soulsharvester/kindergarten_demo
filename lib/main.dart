@@ -1,5 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:kindergarten_game/tentacles/game_components/transition_overlay.dart';
 import 'package:kindergarten_game/tentacles/wanderer.dart';
 import 'tentacles/game_components/start_menu.dart';
 import 'tentacles/game_components/pause_menu.dart';
@@ -48,6 +49,11 @@ class _GameViewState extends State<GameView> {
         overlayBuilderMap: {
           StartMenu.id: (BuildContext context, WandGame game) => StartMenu(game: game),
           PauseMenu.id: (BuildContext context, WandGame game) => PauseMenu(game: game),
+          TransitionOverlay.id: (BuildContext context, WandGame game) => TransitionOverlay(
+            game: game,
+            onMidpoint: () => game.performMapSwitch(),
+            onComplete: () => game.finishTransition(),
+          ),
           'PauseButton': (context, game) => Positioned(
             top: 16,
             right: 16,
