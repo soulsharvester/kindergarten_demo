@@ -81,6 +81,7 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
     world.children.whereType<NPC>().forEach((n) => world.remove(n));
 
     await loadMap(pendingTargetMap!);
+    await Future.delayed(Duration.zero);
 
     if (player != null) {
       if (player!.isMounted) {
@@ -89,7 +90,8 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
       player = null;
     }
 
-    player = Player(position: pendingSpawnPosition!)..priority = 100;
+    final spawnPos = pendingSpawnPosition!.clone();
+    player = Player(position: spawnPos)..priority = 100;
     await world.add(player!);
 
     camera.viewfinder.zoom = 2.5;
