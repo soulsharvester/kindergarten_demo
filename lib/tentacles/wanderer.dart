@@ -74,26 +74,22 @@ class WandGame extends FlameGame with HasCollisionDetection, TapCallbacks, HasKe
   }
 
   Future<void> performMapSwitch() async {
-    if (pendingTargetMap == null || pendingSpawnPosition == null) return;
+    final targetMap = pendingTargetMap;
+    final spawn = pendingSpawnPosition?.clone();
+    if (targetMap == null || spawn == null) return;
 
     world.children.whereType<Obstacle>().forEach((o) => world.remove(o));
     world.children.whereType<Portal>().forEach((p) => world.remove(p));
     world.children.whereType<NPC>().forEach((n) => world.remove(n));
 
-    await loadMap(pendingTargetMap!);
-    await Future.delayed(Duration.zero);
+    await loadMap(targetMap);
 
     if (player != null) {
-      if (player!.isMounted) {
-        world.remove(player!);
-      }
+      if (player!.isMounted) world.remove(player!);
       player = null;
     }
-
-    final spawnPos = pendingSpawnPosition!.clone();
-    player = Player(position: spawnPos)..priority = 100;
+    player = Player(position: spawn)..priority = 100;
     await world.add(player!);
-
     camera.viewfinder.zoom = 2.5;
     camera.follow(player!);
     _updateCameraBounds();

@@ -5,7 +5,7 @@ import '../wanderer.dart';
 class TransitionOverlay extends StatefulWidget {
   static const String id = 'TransitionOverlay';
   final WandGame game;
-  final VoidCallback onMidpoint;
+  final Future<void> Function() onMidpoint;
   final VoidCallback onComplete;
 
   const TransitionOverlay({
@@ -37,10 +37,10 @@ class _TransitionOverlayState extends State<TransitionOverlay>
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     );
 
-    _controller.addListener(() {
+    _controller.addListener(() async {
       if (_animation.value <= 0.0 && !_midpointReached) {
         _midpointReached = true;
-        widget.onMidpoint();
+        await widget.onMidpoint();
         _controller.reverse();
       }
     });
