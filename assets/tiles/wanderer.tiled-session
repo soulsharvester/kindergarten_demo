@@ -20,44 +20,80 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "behind_lunch.tmx": {
+            "expandedObjectLayers": [
+                3,
+                4
+            ],
+            "scale": 1.355234375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 320.23981091831445,
+                "y": 143.88655098864353
+            }
+        },
         "foliage.tsx": {
             "scaleInDock": 2,
             "scaleInEditor": 1
         },
         "house.tmx": {
             "expandedObjectLayers": [
-                5,
-                6
+                6,
+                5
             ],
             "scale": 1.45,
-            "selectedLayer": 4,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 477.93103448275866,
-                "y": 183.10344827586206
+                "x": 320.3448275862069,
+                "y": 183.44827586206895
             }
         },
         "house_walls.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "indoors_floor1.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "indoors_floor2.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "indoors_main.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
+        },
+        "janitors_closet.tmx": {
+            "expandedObjectLayers": [
+                6,
+                5
+            ],
+            "scale": 4,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 80,
+                "y": 80
+            }
+        },
+        "lunch_hall.tmx": {
+            "expandedObjectLayers": [
+                3,
+                4
+            ],
+            "scale": 1.3521,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 320.24258560757335,
+                "y": 184.15797648102946
+            }
         },
         "menu.tmx": {
             "scale": 1.283984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 554.5238819592334,
-                "y": 193.5381807118953
+                "x": 253.11834499543656,
+                "y": 183.8028597505324
             }
         },
         "outside_house.tmx": {
@@ -68,56 +104,56 @@
             "scale": 1.283984375,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 226.6382719805294,
-                "y": 193.5381807118953
+                "x": 320.09735320961363,
+                "y": 183.8028597505324
             }
         },
         "outside_school.tmx": {
             "expandedObjectLayers": [
-                4,
-                3
+                3,
+                4
             ],
             "scale": 1.3522656249999998,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 320.942862094864,
-                "y": 188.20266913166563
+                "x": 320.20336241261776,
+                "y": 184.13542087931137
             }
         },
         "park.tmx": {
             "expandedObjectLayers": [
-                6,
-                7
+                7,
+                6
             ],
             "scale": 1.4621093749999998,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 297.5153620090836,
-                "y": 168.59203847181402
+                "x": 320.0854929201176,
+                "y": 183.98076409297357
             }
         },
         "school.tmx": {
             "expandedObjectLayers": [
-                4,
-                6
+                6,
+                4
             ],
             "scale": 1.3522656249999998,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 178.95892310358778,
-                "y": 188.20266913166563
+                "x": 320.20336241261776,
+                "y": 184.13542087931137
             }
         },
         "school_reception.tmx": {
             "expandedObjectLayers": [
-                4,
-                3
+                3,
+                4
             ],
-            "scale": 1.3522656249999998,
-            "selectedLayer": 2,
+            "scale": 1.2465,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 320.942862094864,
-                "y": 183.76567103818826
+                "x": 288.0064179703169,
+                "y": 129.56277577216204
             }
         },
         "toilet_house.tmx": {
@@ -128,17 +164,17 @@
             "scale": 3,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 80.33333333333331,
-                "y": 79.83333333333331
+                "x": 80,
+                "y": 80
             }
         }
     },
     "last.imagePath": "C:/Users/damus/AndroidStudioProjects/kindergarten_demo/assets/images/Characters",
-    "map.height": 10,
+    "map.height": 23,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 10,
+    "map.width": 40,
     "openFiles": [
         "house.tmx",
         "menu.tmx",
@@ -147,6 +183,9 @@
         "outside_school.tmx",
         "school.tmx",
         "toilet_house.tmx",
+        "janitors_closet.tmx",
+        "lunch_hall.tmx",
+        "behind_lunch.tmx",
         "school_reception.tmx"
     ],
     "project": "wanderer.tiled-project",
@@ -159,11 +198,11 @@
         "outside_school.tmx",
         "school.tmx",
         "toilet_house.tmx",
+        "janitors_closet.tmx",
+        "lunch_hall.tmx",
+        "behind_lunch.tmx",
         "school_reception.tmx",
-        "indoors_floor2.tsx",
-        "indoors_main.tsx",
-        "indoors_floor1.tsx",
-        "house_walls.tsx"
+        "indoors_floor2.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
