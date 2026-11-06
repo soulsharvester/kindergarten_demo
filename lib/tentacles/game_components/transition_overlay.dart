@@ -34,7 +34,7 @@ class _TransitionOverlayState extends State<TransitionOverlay>
     );
 
     _animation = Tween<double>(begin: 1.0, end: 0.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
 
     _controller.addListener(() async {

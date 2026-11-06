@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="21">
+<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="26">
  <tileset firstgid="1" source="indoors_floor2.tsx"/>
  <tileset firstgid="5" source="indoors_floor1.tsx"/>
  <tileset firstgid="396" source="house_walls.tsx"/>
@@ -143,5 +143,10 @@
   <object id="12" x="61.3793" y="81.3793" width="52.4138" height="31.7241"/>
   <object id="14" x="544.828" y="-4.82759" width="106.897" height="20.6897"/>
   <object id="17" x="591.034" y="9.65517" width="63.4483" height="24.1379"/>
+  <object id="21" x="624.138" y="156.552" width="12.4138" height="31.0345"/>
+  <object id="22" x="613.793" y="159.31" width="2.75862" height="22.069"/>
+  <object id="23" x="626.207" y="137.241" width="11.0345" height="19.3103"/>
+  <object id="24" x="622.759" y="239.31" width="17.931" height="28.2759"/>
+  <object id="25" x="623.448" y="300" width="19.3103" height="24.8276"/>
  </objectgroup>
 </map>
