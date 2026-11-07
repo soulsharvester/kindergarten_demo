@@ -41,6 +41,12 @@ jobs:
       - name: Build Flutter Web
         run: flutter build web --release --base-href "/kindergarten_demo/"
 
+      - name: Delete prior GitHub Pages artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+            name: github-pages
+            failOnError: false
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
