@@ -64,7 +64,13 @@
    <property name="spawnY" type="float" value="265"/>
    <property name="targetMap" value="school_reception.tmx"/>
   </properties>
-  <object id="1" x="-1.25" y="47.5" width="5.75" height="43.5"/>
+  <object id="1" x="-1.25" y="47.5" width="3.5" height="43.5">
+   <properties>
+    <property name="spawnX" type="float" value="606"/>
+    <property name="spawnY" type="float" value="270"/>
+    <property name="targetMap" value="school_reception.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="5" name="Collisions">
   <object id="2" x="-1.5" y="-1.25" width="163" height="48.25"/>

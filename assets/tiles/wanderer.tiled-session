@@ -12,11 +12,31 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Fences.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Fields.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Free_Chicken_House.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Hills.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Terrain.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Wood_Bridge.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Wooden path.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -32,14 +52,38 @@
                 "y": 143.88655098864353
             }
         },
+        "classroom_one.tmx": {
+            "expandedObjectLayers": [
+                7,
+                6
+            ],
+            "scale": 1.8069791666666666,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 240.17985818873584,
+                "y": 119.81322418862052
+            }
+        },
+        "classroom_two.tmx": {
+            "expandedObjectLayers": [
+                5,
+                6
+            ],
+            "scale": 1.8069791666666666,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 240.17985818873584,
+                "y": 121.47345362310487
+            }
+        },
         "foliage.tsx": {
             "scaleInDock": 2,
             "scaleInEditor": 1
         },
         "house.tmx": {
             "expandedObjectLayers": [
-                6,
-                5
+                5,
+                6
             ],
             "scale": 1.45,
             "selectedLayer": 5,
@@ -66,14 +110,14 @@
         },
         "janitors_closet.tmx": {
             "expandedObjectLayers": [
-                6,
-                5
+                5,
+                6
             ],
             "scale": 4,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 80,
-                "y": 80
+                "x": 55,
+                "y": 81.375
             }
         },
         "lunch_hall.tmx": {
@@ -132,6 +176,18 @@
                 "y": 183.98076409297357
             }
         },
+        "playground.tmx": {
+            "expandedObjectLayers": [
+                5,
+                4
+            ],
+            "scale": 1.0841875,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 400.299763647893,
+                "y": 319.59416613823714
+            }
+        },
         "school.tmx": {
             "expandedObjectLayers": [
                 6,
@@ -140,7 +196,7 @@
             "scale": 1.3522656249999998,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 320.20336241261776,
+                "x": 319.83361257149465,
                 "y": 184.13542087931137
             }
         },
@@ -150,10 +206,10 @@
                 4
             ],
             "scale": 1.2465,
-            "selectedLayer": 3,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 288.0064179703169,
-                "y": 129.56277577216204
+                "y": 188.12675491375853
             }
         },
         "toilet_house.tmx": {
@@ -169,24 +225,32 @@
             }
         }
     },
-    "last.imagePath": "C:/Users/damus/AndroidStudioProjects/kindergarten_demo/assets/images/Characters",
-    "map.height": 23,
+    "last.imagePath": "C:/Users/damus/AndroidStudioProjects/kindergarten_demo/assets/images/Terrain",
+    "map.height": 40,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 40,
+    "map.width": 50,
     "openFiles": [
         "house.tmx",
         "menu.tmx",
         "outside_house.tmx",
         "park.tmx",
         "outside_school.tmx",
-        "school.tmx",
         "toilet_house.tmx",
         "janitors_closet.tmx",
         "lunch_hall.tmx",
         "behind_lunch.tmx",
-        "school_reception.tmx"
+        "school_reception.tmx",
+        "classroom_two.tmx",
+        "classroom_one.tmx",
+        "playground.tmx",
+        "school.tmx",
+        "Wooden path.tsx",
+        "Fences.tsx",
+        "Hills.tsx",
+        "Free_Chicken_House.tsx",
+        "Wood_Bridge.tsx"
     ],
     "project": "wanderer.tiled-project",
     "property.type": "string",
@@ -196,13 +260,13 @@
         "outside_house.tmx",
         "park.tmx",
         "outside_school.tmx",
-        "school.tmx",
         "toilet_house.tmx",
         "janitors_closet.tmx",
         "lunch_hall.tmx",
         "behind_lunch.tmx",
-        "school_reception.tmx",
-        "indoors_floor2.tsx"
+        "Wood_Bridge.tsx",
+        "Free_Chicken_House.tsx",
+        "Hills.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

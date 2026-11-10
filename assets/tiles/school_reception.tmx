@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="39">
+<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="44">
  <tileset firstgid="1" source="indoors_floor1.tsx"/>
  <tileset firstgid="392" source="house_walls.tsx"/>
  <tileset firstgid="427" source="Colours.tsx"/>
@@ -63,7 +63,7 @@
    <property name="spawnY" type="float" value="67"/>
    <property name="targetMap" value="janitors_closet.tmx"/>
   </properties>
-  <object id="25" x="270.657" y="338.691" width="97.614" height="7.395">
+  <object id="25" x="269.855" y="345.911" width="97.614" height="7.395">
    <properties>
     <property name="spawnX" type="float" value="312"/>
     <property name="spawnY" type="float" value="166"/>
@@ -84,6 +84,34 @@
     <property name="targetMap" value="behind_lunch.tmx"/>
    </properties>
   </object>
+  <object id="39" x="628.961" y="252.708" width="5.61573" height="29.6831">
+   <properties>
+    <property name="spawnX" type="float" value="16"/>
+    <property name="spawnY" type="float" value="68"/>
+    <property name="targetMap" value="janitors_closet.tmx"/>
+   </properties>
+  </object>
+  <object id="40" x="190.935" y="48.1348" width="32.8921" height="8.02247">
+   <properties>
+    <property name="spawnX" type="float" value="91"/>
+    <property name="spawnY" type="float" value="200"/>
+    <property name="targetMap" value="classroom_two.tmx"/>
+   </properties>
+  </object>
+  <object id="41" x="64.1797" y="48.1348" width="31.2876" height="8.82466">
+   <properties>
+    <property name="spawnX" type="float" value="400"/>
+    <property name="spawnY" type="float" value="207"/>
+    <property name="targetMap" value="classroom_one.tmx"/>
+   </properties>
+  </object>
+  <object id="43" x="628.159" y="155.636" width="6.41797" height="62.5752">
+   <properties>
+    <property name="spawnX" type="float" value="22"/>
+    <property name="spawnY" type="float" value="492"/>
+    <property name="targetMap" value="playground.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="3" name="Collisions">
   <object id="2" x="-6.6555" y="-4.437" width="647.802" height="53.9835"/>
@@ -98,7 +126,7 @@
   <object id="14" x="621.18" y="284.707" width="25.143" height="102.79"/>
   <object id="15" x="368.271" y="333.514" width="256.606" height="73.95"/>
   <object id="16" x="-5.1765" y="332.035" width="278.052" height="96.135"/>
-  <object id="17" x="258.085" y="348.304" width="124.975" height="36.975"/>
+  <object id="17" x="258.085" y="357.931" width="124.975" height="27.348"/>
   <object id="20" x="-9.6135" y="217.413" width="23.664" height="115.362"/>
   <object id="21" x="-8.1345" y="45.1095" width="23.664" height="41.412"/>
   <object id="22" x="4.437" y="39.933" width="57.681" height="21.4455"/>
