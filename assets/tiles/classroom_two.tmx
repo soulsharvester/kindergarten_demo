@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="30" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="20">
+<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="30" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="21">
  <tileset firstgid="1" source="indoors_floor2.tsx"/>
  <tileset firstgid="5" source="indoors_floor1.tsx"/>
  <tileset firstgid="396" source="Colours.tsx"/>
@@ -77,7 +77,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1930,1946,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1946,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1914,1915,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,1139,1140,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <objectgroup id="6" name="Portals">
@@ -107,5 +107,6 @@
   <object id="16" x="205.868" y="159.935" width="38.7387" height="28.7773"/>
   <object id="17" x="433.873" y="117.323" width="12.175" height="11.6216"/>
   <object id="18" x="457.117" y="137.799" width="4.98069" height="12.7284"/>
+  <object id="20" x="33.2046" y="29.8841" width="26.5637" height="10.5148"/>
  </objectgroup>
 </map>
